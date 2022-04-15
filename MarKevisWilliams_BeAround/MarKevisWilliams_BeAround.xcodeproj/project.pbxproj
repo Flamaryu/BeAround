@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		187D3B7E28094B4600E9D7A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187D3B7D28094B4600E9D7A0 /* GoogleService-Info.plist */; };
 		1894A02D2803D163002EBCC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1894A02B2803D163002EBCC1 /* Main.storyboard */; };
 		18BAEF8928023E1A00D4517B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BAEF8828023E1A00D4517B /* AppDelegate.swift */; };
 		18BAEF8B28023E1A00D4517B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BAEF8A28023E1A00D4517B /* SceneDelegate.swift */; };
@@ -21,9 +22,11 @@
 		18EEA34B280687BA0094CA5E /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEA34A280687BA0094CA5E /* EventsViewController.swift */; };
 		18EEA34D280687CD0094CA5E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEA34C280687CD0094CA5E /* SettingsViewController.swift */; };
 		18EEA34F2806881F0094CA5E /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEA34E2806881F0094CA5E /* EventDetailsViewController.swift */; };
+		9576D88A070CEB1A53DD55C3 /* Pods_MarKevisWilliams_BeAround.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B585434F0B28897C0874557 /* Pods_MarKevisWilliams_BeAround.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		187D3B7D28094B4600E9D7A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1894A02C2803D163002EBCC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18BAEF8528023E1A00D4517B /* MarKevisWilliams_BeAround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarKevisWilliams_BeAround.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BAEF8828023E1A00D4517B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +43,9 @@
 		18EEA34A280687BA0094CA5E /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		18EEA34C280687CD0094CA5E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		18EEA34E2806881F0094CA5E /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		1FDBEACCC3AB500E83A9DFB9 /* Pods-MarKevisWilliams_BeAround.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarKevisWilliams_BeAround.release.xcconfig"; path = "Target Support Files/Pods-MarKevisWilliams_BeAround/Pods-MarKevisWilliams_BeAround.release.xcconfig"; sourceTree = "<group>"; };
+		2B585434F0B28897C0874557 /* Pods_MarKevisWilliams_BeAround.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarKevisWilliams_BeAround.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5584739F0D406845A6877876 /* Pods-MarKevisWilliams_BeAround.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarKevisWilliams_BeAround.debug.xcconfig"; path = "Target Support Files/Pods-MarKevisWilliams_BeAround/Pods-MarKevisWilliams_BeAround.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9576D88A070CEB1A53DD55C3 /* Pods_MarKevisWilliams_BeAround.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +65,8 @@
 			children = (
 				18BAEF8728023E1A00D4517B /* MarKevisWilliams_BeAround */,
 				18BAEF8628023E1A00D4517B /* Products */,
+				741AE8AF0E5F87BC06DE3E59 /* Pods */,
+				5BAF0536011A29D1588A9972 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +90,7 @@
 				18BAEF9628023E2200D4517B /* LaunchScreen.storyboard */,
 				18BAEF9928023E2200D4517B /* Info.plist */,
 				18BAEF9128023E1A00D4517B /* MarKevisWilliams_BeAround.xcdatamodeld */,
+				187D3B7D28094B4600E9D7A0 /* GoogleService-Info.plist */,
 			);
 			path = MarKevisWilliams_BeAround;
 			sourceTree = "<group>";
@@ -107,6 +117,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5BAF0536011A29D1588A9972 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B585434F0B28897C0874557 /* Pods_MarKevisWilliams_BeAround.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		741AE8AF0E5F87BC06DE3E59 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5584739F0D406845A6877876 /* Pods-MarKevisWilliams_BeAround.debug.xcconfig */,
+				1FDBEACCC3AB500E83A9DFB9 /* Pods-MarKevisWilliams_BeAround.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,9 +142,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18BAEF9C28023E2200D4517B /* Build configuration list for PBXNativeTarget "MarKevisWilliams_BeAround" */;
 			buildPhases = (
+				65638052583787CB910DB078 /* [CP] Check Pods Manifest.lock */,
 				18BAEF8128023E1A00D4517B /* Sources */,
 				18BAEF8228023E1A00D4517B /* Frameworks */,
 				18BAEF8328023E1A00D4517B /* Resources */,
+				E30ECFE682A3DF93765FE148 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,12 +196,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				1894A02D2803D163002EBCC1 /* Main.storyboard in Resources */,
+				187D3B7E28094B4600E9D7A0 /* GoogleService-Info.plist in Resources */,
 				18BAEF9828023E2200D4517B /* LaunchScreen.storyboard in Resources */,
 				18BAEF9528023E2200D4517B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		65638052583787CB910DB078 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MarKevisWilliams_BeAround-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E30ECFE682A3DF93765FE148 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MarKevisWilliams_BeAround/Pods-MarKevisWilliams_BeAround-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MarKevisWilliams_BeAround/Pods-MarKevisWilliams_BeAround-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MarKevisWilliams_BeAround/Pods-MarKevisWilliams_BeAround-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18BAEF8128023E1A00D4517B /* Sources */ = {
@@ -332,6 +405,7 @@
 		};
 		18BAEF9D28023E2200D4517B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5584739F0D406845A6877876 /* Pods-MarKevisWilliams_BeAround.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -363,6 +437,7 @@
 		};
 		18BAEF9E28023E2200D4517B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FDBEACCC3AB500E83A9DFB9 /* Pods-MarKevisWilliams_BeAround.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var PasswordTF: UITextField!
@@ -17,13 +17,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         FormatLook()
-       
+        PasswordTF.isSecureTextEntry = false
+        PasswordTF.delegate = self
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        PasswordTF.isSecureTextEntry = false
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        PasswordTF.resignFirstResponder()
+        PasswordTF.isSecureTextEntry = true
+        return false
     }
     
     
     
-    
-
 }
 
 extension ViewController{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gd4-hW-1ZT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sJZ-Ln-ve9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -24,10 +24,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jSB-cu-4x5">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="10" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jSB-cu-4x5">
                                 <rect key="frame" x="30" y="495" width="354" height="35.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmX-cn-fTG">
                                 <rect key="frame" x="165" y="699" width="84" height="34.5"/>
@@ -170,7 +170,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ZZo-6h-KYq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="sJZ-Ln-ve9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginVC" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="sJZ-Ln-ve9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TDf-T0-aSO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -193,18 +193,17 @@
         <!--Item-->
         <scene sceneID="Dpd-D9-HIP">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Gd4-hW-1ZT" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabbedVC" automaticallyAdjustsScrollViewInsets="NO" id="Gd4-hW-1ZT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="LQi-Kb-ror">
                         <color key="badgeColor" red="0.95294117649999999" green="0.90196078430000004" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="SK1-Lc-cJb">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.42352941176470588" green="0.53725490196078429" blue="0.70196078431372544" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.95294117649999999" green="0.90196078430000004" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="barTintColor" red="0.42352941179999998" green="0.53725490200000003" blue="0.70196078429999997" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="selectedImageTintColor" red="0.95294117649999999" green="0.90196078430000004" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <tabBarAppearance key="standardAppearance" stackedItemPositioning="automatic">
-                            <color key="backgroundColor" red="0.42352941179999998" green="0.53725490200000003" blue="0.70196078429999997" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="selectionIndicatorTintColor" red="0.95294117649999999" green="0.90196078430000004" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </tabBarAppearance>
                     </tabBar>
@@ -293,11 +292,11 @@
             </objects>
             <point key="canvasLocation" x="5737.68115942029" y="874.55357142857144"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="F85-Go-ZFT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VBo-Q4-1ro" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="02R-2U-fdd"/>
+                <navigationController storyboardIdentifier="HomeVC" automaticallyAdjustsScrollViewInsets="NO" id="VBo-Q4-1ro" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="02R-2U-fdd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JsL-kp-9s3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -319,6 +318,7 @@
         <image name="B Z" width="1500" height="1500"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
