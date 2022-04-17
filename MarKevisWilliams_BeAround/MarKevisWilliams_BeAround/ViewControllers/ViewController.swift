@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
         ErrorLabel.alpha = 0
         PasswordTF.isSecureTextEntry = false
         PasswordTF.delegate = self

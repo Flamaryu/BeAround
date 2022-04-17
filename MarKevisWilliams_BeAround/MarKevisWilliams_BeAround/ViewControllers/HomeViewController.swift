@@ -6,13 +6,51 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var TableView: UITableView!
+    
+    var events = [Event]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        TableView.backgroundColor = .clear
         Utilities.FormatLook(self)
+        TableView.dataSource = self
+        TableView.delegate = self
+        TableView.reloadData()
+        ObserveEvents()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func ObserveEvents(){
+        let eventRef = Database.database().reference().child("events")
+        
+        eventRef.observe(.value) { snapShot in
+            var tempEvets = [Event]()
+            
+           for child in snapShot.children{
+               if let childrenSnapShot = child as? DataSnapshot,
+                  let dict = childrenSnapShot.value as? [String:Any],
+                  let eventName = dict["eventName"] as? String,
+                  let eventLocation = dict["location"] as? String,
+                  let catergory = dict["catergory"] as? String,
+                  let eventDate = dict["date"] as? String,
+                  let description = dict["description"] as? String,
+                  let uids = dict["uids"] as? [String]{
+                   let event = Event(id: childrenSnapShot.key, eventName: eventName, location: eventLocation, description: description, date: eventDate, catergory: catergory,uid: uids)
+                   tempEvets.append(event)
+               }
+                
+            }
+            
+            self.events = tempEvets
+            self.TableView.reloadData()
+        }
+        
     }
     
 
@@ -26,4 +64,21 @@ class HomeViewController: UIViewController {
     }
     */
 
+}
+extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell_reuseID_01", for: indexPath) as! CustomTableViewCell
+        cell.set(event: events[indexPath.row])
+        return cell
+    }
+    
+    
+    
 }
