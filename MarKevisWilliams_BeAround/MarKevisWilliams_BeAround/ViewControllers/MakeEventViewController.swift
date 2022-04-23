@@ -21,18 +21,32 @@ class MakeEventViewController: UIViewController {
     //Pickers
     let datePicker = UIDatePicker()
     let pickerView = UIPickerView()
+    let editEvent: Event? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Utilities.FormatLook(self)
         // Do any additional setup after loading the view.
         CreatDatePicker()
-        CatergoryTF.inputView = pickerView
+        CreatPickerView()
+        
+       
         pickerView.dataSource = self
         pickerView.delegate = self
         
     }
-    
+    func CreatPickerView(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        //bar button
+        let selectButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(SelectedPressed))
+        
+        toolbar.setItems([selectButton], animated: true)
+        CatergoryTF.inputAccessoryView = toolbar
+        CatergoryTF.inputView = pickerView
+        
+    }
     func CreatDatePicker(){
         //makes the bar for done button
         let toolbar = UIToolbar()
@@ -59,6 +73,10 @@ class MakeEventViewController: UIViewController {
         
         DateTF.text = formatter.string(from: datePicker.date)
         DateTF.resignFirstResponder()
+        
+    }
+    @objc func SelectedPressed(){
+        CatergoryTF.resignFirstResponder()
         
     }
     
@@ -96,7 +114,7 @@ class MakeEventViewController: UIViewController {
             let description = DescriptionTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let uids: [String] = [Auth.auth().currentUser!.uid]
             
-            let eventRef = Database.database().reference().child("events").childByAutoId()
+             let eventRef = Database.database().reference().child("events").childByAutoId()
             
             let eventObjct = [
                 "eventName": eventName,
@@ -141,6 +159,5 @@ extension MakeEventViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         CatergoryTF.text = catergories[row]
-        CatergoryTF.resignFirstResponder()
     }
 }

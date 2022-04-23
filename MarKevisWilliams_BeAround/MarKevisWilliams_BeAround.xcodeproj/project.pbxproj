@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		187118D2280AA53F00C45F34 /* MakeEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187118D1280AA53F00C45F34 /* MakeEventViewController.swift */; };
+		187462D72812083600E851E7 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187462D62812083600E851E7 /* TabViewController.swift */; };
 		187D3B97280A6A2300E9D7A0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 187D3B96280A6A2300E9D7A0 /* FirebaseAnalytics */; };
 		187D3B99280A6A2300E9D7A0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 187D3B98280A6A2300E9D7A0 /* FirebaseAuth */; };
 		187D3B9B280A6A2300E9D7A0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 187D3B9A280A6A2300E9D7A0 /* FirebaseDatabase */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		187118D1280AA53F00C45F34 /* MakeEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeEventViewController.swift; sourceTree = "<group>"; };
+		187462D62812083600E851E7 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		187D3BA0280A6BF300E9D7A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		187D3BA2280A76B100E9D7A0 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		1894A02C2803D163002EBCC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				18EEA34C280687CD0094CA5E /* SettingsViewController.swift */,
 				18EEA34E2806881F0094CA5E /* EventDetailsViewController.swift */,
 				187118D1280AA53F00C45F34 /* MakeEventViewController.swift */,
+				187462D62812083600E851E7 /* TabViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				18EEA34328067A340094CA5E /* SignUpViewController.swift in Sources */,
 				18BAEF8D28023E1A00D4517B /* ViewController.swift in Sources */,
 				18BAEF9328023E1A00D4517B /* MarKevisWilliams_BeAround.xcdatamodeld in Sources */,
+				187462D72812083600E851E7 /* TabViewController.swift in Sources */,
 				18EEA34D280687CD0094CA5E /* SettingsViewController.swift in Sources */,
 				18EEA349280687AB0094CA5E /* HomeViewController.swift in Sources */,
 				18BAEFA02802437A00D4517B /* UIColorExtention.swift in Sources */,
@@ -395,7 +399,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -426,7 +430,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

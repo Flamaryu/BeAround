@@ -17,6 +17,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         TableView.backgroundColor = .clear
+//        TableView.estimatedRowHeight = UITableView.automaticDimension
+//        self.view.addSubview(TableView)
         Utilities.FormatLook(self)
         TableView.dataSource = self
         TableView.delegate = self
@@ -63,6 +65,16 @@ class HomeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexpath = TableView.indexPathForSelectedRow{
+            let eventToSend = events[indexpath.row]
+           if let destiation = segue.destination as? EventDetailsViewController{
+               destiation.event = eventToSend
+               print("Event Sent")
+            }
+            
+        }
+    }
 
 }
 extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
@@ -78,7 +90,8 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
         cell.set(event: events[indexPath.row])
         return cell
     }
-    
+//
+        
     
     
 }
