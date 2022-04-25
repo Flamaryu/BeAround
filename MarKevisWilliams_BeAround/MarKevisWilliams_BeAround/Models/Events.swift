@@ -13,9 +13,10 @@ class Event{
     var description: String
     var date: String
     var catergory: String
-    var uid:[String]
+    var uid: String
+    var attendingUID: [String]
     
-    init(id: String, eventName: String, location: String,description: String, date: String, catergory: String, uid:[String] = [String]()){
+    init(id: String, eventName: String, location: String,description: String, date: String, catergory: String, uid: String, attendingUID: [String]  = [String]()){
         self.id = id
         self.eventName = eventName
         self.location = location
@@ -23,6 +24,7 @@ class Event{
         self.description = description
         self.catergory = catergory
         self.uid = uid
+        self.attendingUID = attendingUID
     }
     
 }

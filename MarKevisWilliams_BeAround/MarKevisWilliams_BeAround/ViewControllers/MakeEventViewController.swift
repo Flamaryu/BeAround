@@ -17,11 +17,20 @@ class MakeEventViewController: UIViewController {
     @IBOutlet weak var CatergoryTF: UITextField!
     @IBOutlet weak var EventNameTF: UITextField!
     
+    @IBOutlet weak var makeButton: UIButton!
+    
+    var ref: DatabaseReference!
+    var eventEdit: Event?
+    
+    
+    
     let catergories = ["Fundraiser","Technology","Cars","Meet Ups", "Parties","Community"]
     //Pickers
     let datePicker = UIDatePicker()
     let pickerView = UIPickerView()
-    let editEvent: Event? = nil
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +38,17 @@ class MakeEventViewController: UIViewController {
         // Do any additional setup after loading the view.
         CreatDatePicker()
         CreatPickerView()
+        ref = Database.database().reference()
+        if eventEdit != nil {
+            AdressTF.text = eventEdit!.location
+            EventNameTF.text = eventEdit!.eventName
+            DescriptionTextView.text = eventEdit!.description
+            DateTF.text = eventEdit!.date
+            CatergoryTF.text = eventEdit!.catergory
+            makeButton.setTitle("Edit Event", for: .normal)
+        }
         
-       
+        
         pickerView.dataSource = self
         pickerView.delegate = self
         
@@ -106,35 +124,72 @@ class MakeEventViewController: UIViewController {
             showError(error)
         }
         else{
-            //clean entrties
-            let eventName = EventNameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let location = AdressTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let date = DateTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let catergory = CatergoryTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let description = DescriptionTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let uids: [String] = [Auth.auth().currentUser!.uid]
             
-             let eventRef = Database.database().reference().child("events").childByAutoId()
-            
-            let eventObjct = [
-                "eventName": eventName,
-                "location": location,
-                "catergory": catergory,
-                "date": date,
-                "description": description,
-                "uids": uids
-            ] as [String: Any]
-            
-            eventRef.setValue(eventObjct) { error, ref in
-                if error != nil{
-                    self.showError(error!.localizedDescription)
+            if eventEdit != nil{
+                let eventName = EventNameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let location = AdressTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let date = DateTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let catergory = CatergoryTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let description = DescriptionTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let uid = eventEdit!.uid
+                let uids = eventEdit!.attendingUID
+                
+                let eventObjct = [
+                    "eventName": eventName,
+                    "location": location,
+                    "catergory": catergory,
+                    "date": date,
+                    "description": description,
+                    "uids": uids,
+                    "uid": uid
+                ] as [String: Any]
+                
+                let childupdates = ["events/\(eventEdit!.id)": eventObjct,
+                                    "users/profile/\(uid)/hostedEvents/\(eventEdit!.id)" : eventObjct]
+                ref.updateChildValues(childupdates) { error, ref in
+                    if error != nil{
+                        self.showError(error!.localizedDescription)
+                    }
+                    else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
-                else{
-                    self.navigationController?.popViewController(animated: true)
+                
+            }
+            else{
+                //clean entrties
+                let eventName = EventNameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let location = AdressTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let date = DateTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let catergory = CatergoryTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let description = DescriptionTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let uid = Auth.auth().currentUser!.uid
+                let uids = [uid]
+                
+                guard let key = Database.database().reference().child("events").childByAutoId().key else{ return}
+                
+                
+                let eventObjct = [
+                    "eventName": eventName,
+                    "location": location,
+                    "catergory": catergory,
+                    "date": date,
+                    "description": description,
+                    "uids": uids,
+                    "uid": uid
+                ] as [String: Any]
+                
+                let childupdates = ["events/\(key)": eventObjct,
+                                    "users/profile/\(uid)/hostedEvents/\(key)" : eventObjct]
+                ref.updateChildValues(childupdates) { error, ref in
+                    if error != nil{
+                        self.showError(error!.localizedDescription)
+                    }
+                    else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
             }
-            
-            
         }
     }
     

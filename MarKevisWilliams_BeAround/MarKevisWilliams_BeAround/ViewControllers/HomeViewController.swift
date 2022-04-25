@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
 
@@ -43,7 +44,7 @@ class HomeViewController: UIViewController {
                   let eventDate = dict["date"] as? String,
                   let description = dict["description"] as? String,
                   let uids = dict["uids"] as? [String]{
-                   let event = Event(id: childrenSnapShot.key, eventName: eventName, location: eventLocation, description: description, date: eventDate, catergory: catergory,uid: uids)
+                   let event = Event(id: childrenSnapShot.key, eventName: eventName, location: eventLocation, description: description, date: eventDate, catergory: catergory, uid: Auth.auth().currentUser!.uid,attendingUID: uids)
                    tempEvets.append(event)
                }
                 

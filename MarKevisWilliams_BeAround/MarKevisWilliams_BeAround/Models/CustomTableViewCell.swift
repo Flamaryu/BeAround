@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class CustomTableViewCell: UITableViewCell {
-    
+    var ref = Database.database().reference()
     @IBOutlet weak var BackGroundView: UIView!
     
     @IBOutlet weak var AttendCountLabel: UILabel!
@@ -39,13 +41,30 @@ class CustomTableViewCell: UITableViewCell {
         EventName.text = "Event: \(event.eventName)"
         EventLocation.text = "Address: \(event.location)"
         EventDate.text = "Date: \(event.date)"
-        if event.uid.count >= 2{
-            AttendCountLabel.text = (event.uid.count - 1).description
-            AttendCountLabel.alpha = 1
-        }
-        else {
-            AttendCountLabel.alpha = 0
-        }
+        if AttendCountLabel != nil{
+            AttendCountLabel.text = String(event.attendingUID.count - 1)}
     }
 
+    @IBAction func AttendEvent(_ sender: Any) {
+        if !event!.attendingUID.contains(Auth.auth().currentUser!.uid){
+            event!.attendingUID.append(Auth.auth().currentUser!.uid)
+            let eventObjct = [
+                "eventName": event!.eventName,
+                "location": event!.location,
+                "catergory": event!.catergory,
+                "date": event!.date,
+                "description": event!.description,
+                "uids": event!.attendingUID,
+                "uid": event!.uid
+            ] as [String: Any]
+            
+            let childupdates = ["events/\(event!.id)": eventObjct,
+                                "users/profile/\(Auth.auth().currentUser!.uid)/attendingEvents/\(event!.id)" : eventObjct]
+            ref.updateChildValues(childupdates) { error, ref in
+                if error != nil{
+                   print(error!.localizedDescription)
+                }else { return}
+            }
+        }
+    }
 }
