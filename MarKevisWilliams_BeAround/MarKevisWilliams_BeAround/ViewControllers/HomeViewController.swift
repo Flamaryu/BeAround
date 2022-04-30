@@ -66,7 +66,7 @@ class HomeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func r {
         if let indexpath = TableView.indexPathForSelectedRow{
             let eventToSend = events[indexpath.row]
            if let destiation = segue.destination as? EventDetailsViewController{
