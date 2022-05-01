@@ -77,6 +77,7 @@ extension ViewController: UITextFieldDelegate{
             PasswordTF.isSecureTextEntry = false
         }
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == PasswordTF && !PasswordTF.isSecureTextEntry{
             PasswordTF.isSecureTextEntry = true
@@ -84,7 +85,13 @@ extension ViewController: UITextFieldDelegate{
         return true
     }
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        PasswordTF.resignFirstResponder()
+            if textField == EmailTF{
+                EmailTF.resignFirstResponder()
+                PasswordTF.becomeFirstResponder()
+            }
+            else{
+                textField.resignFirstResponder()
+            }
         return false
     }
     

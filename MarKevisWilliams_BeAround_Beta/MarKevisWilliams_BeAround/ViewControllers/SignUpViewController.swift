@@ -12,7 +12,6 @@ import FirebaseDatabase
 class SignUpViewController: UIViewController {
     
     @IBOutlet weak var FirstNameFiled: UITextField!
-    
     @IBOutlet weak var ErrorLabel: UILabel!
     @IBOutlet weak var ConfimrPWDField: UITextField!
     @IBOutlet weak var PWDField: UITextField!

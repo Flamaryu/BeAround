@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Foundation
 import FirebaseDatabase
 import FirebaseAuth
+import EventKitUI
+import EventKit
 
-class CustomTableViewCell: UITableViewCell {
+class CustomTableViewCell: UITableViewCell, EKEventEditViewDelegate {
     var ref = Database.database().reference()
     @IBOutlet weak var BackGroundView: UIView!
     
@@ -21,19 +24,23 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-       
+        
         
         // Initialization code
     }
-
+    
     @IBAction func AttendTapped(_ sender: UIButton) {
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
     weak var event:Event?
     
     func set(event: Event){
@@ -44,7 +51,8 @@ class CustomTableViewCell: UITableViewCell {
         if AttendCountLabel != nil{
             AttendCountLabel.text = String(event.attendingUID.count - 1)}
     }
-
+    
+    
     @IBAction func AttendEvent(_ sender: Any) {
         if !event!.attendingUID.contains(Auth.auth().currentUser!.uid){
             event!.attendingUID.append(Auth.auth().currentUser!.uid)
@@ -62,9 +70,12 @@ class CustomTableViewCell: UITableViewCell {
                                 "users/profile/\(Auth.auth().currentUser!.uid)/attendingEvents/\(event!.id)" : eventObjct]
             ref.updateChildValues(childupdates) {  error, ref in
                 if error != nil{
-                   print(error!.localizedDescription)
+                    print(error!.localizedDescription)
                 }else { return}
+                
             }
+            
         }
+        
     }
 }

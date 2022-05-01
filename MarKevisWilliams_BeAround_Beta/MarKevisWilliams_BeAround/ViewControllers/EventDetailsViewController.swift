@@ -18,6 +18,9 @@ class EventDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var EventDateLabel: UILabel!
     @IBOutlet weak var EventNameLable: UILabel!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var BackGroundView: UIView!
+    
     var event : Event!
     var posts: [Post] = []
     var ref = Database.database().reference()
@@ -36,6 +39,9 @@ class EventDetailsViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+        BackGroundView.layer.cornerRadius = 10
+        BackGroundView.clipsToBounds = true
+        
         
         // Do any additional setup after loading the view.
     }

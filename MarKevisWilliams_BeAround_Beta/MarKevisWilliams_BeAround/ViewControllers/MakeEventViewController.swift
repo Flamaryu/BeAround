@@ -18,10 +18,6 @@ class MakeEventViewController: UIViewController, EKEventEditViewDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
-        controller.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
-    }
     
     
     @IBOutlet weak var Trash: UIBarButtonItem!
@@ -109,7 +105,7 @@ class MakeEventViewController: UIViewController, EKEventEditViewDelegate {
         let alert = UIAlertController(title: "Deleting Event", message: "Once event is deleted it can not be undone!", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let delete = UIAlertAction(title: "Delete", style: .destructive) { delete in
-            self.DeleteEvent()
+            self.Deleteevent()
         }
         
         alert.addAction(cancel)
@@ -117,7 +113,7 @@ class MakeEventViewController: UIViewController, EKEventEditViewDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    func DeleteEvent(){
+    func Deleteevent(){
         //removing event from all profiles that are attending and any chats made to event
         for uid in eventEdit!.attendingUID{
             if uid != eventEdit!.uid{
@@ -132,7 +128,7 @@ class MakeEventViewController: UIViewController, EKEventEditViewDelegate {
             let currentUserRef = Database.database().reference().child("users/profile/\(eventEdit!.uid)/hostedEvents/\(eventEdit!.id)")
             currentUserRef.removeValue()
         }
-       
+        
         // removing event from database as a whole
         
         let eventref = Database.database().reference().child("events/\(eventEdit!.id)")

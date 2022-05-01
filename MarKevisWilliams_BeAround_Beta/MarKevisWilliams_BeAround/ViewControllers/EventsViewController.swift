@@ -8,8 +8,11 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import EventKitUI
+import EventKit
+import Foundation
 
-class EventsViewController: UIViewController {
+class EventsViewController: UIViewController, EKEventEditViewDelegate {
 
     @IBOutlet weak var HostedTV: UITableView!
     
@@ -19,6 +22,8 @@ class EventsViewController: UIViewController {
     var attendingEvents = [Event]()
     let uid = Auth.auth().currentUser!.uid
     var SelectedTB: UITableView?
+    let eventstore = EKEventStore()
+    var dateFormatter = DateFormatter()
     
    
     
@@ -162,12 +167,46 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource{
         if tableView == HostedTV{
             performSegue(withIdentifier: "editEvent", sender: indexPath)}
         else{
-            removeEvent(indexPath)
-            print("event removed")
+            let alert = UIAlertController(title: "Edit Event", message: "Would you like to delete event or add it to your calendar", preferredStyle: .alert)
+            
+            let Add = UIAlertAction(title: "Add to Calendar", style: .default) {  add in
+                self.eventstore.requestAccess(to: .event) { [weak self]Success, Error in
+                    if Success, Error == nil{
+                        DispatchQueue.main.async {
+                            guard let store = self?.eventstore else{return}
+                            
+                            let newEvent = EKEvent(eventStore: store)
+                            newEvent.title = self?.attendingEvents[indexPath.row].eventName
+                            self?.dateFormatter.dateFormat = "MMM dd, yyyy"
+                            let date = self?.dateFormatter.date(from: (self?.attendingEvents[indexPath.row].date)!)
+                            newEvent.startDate = date
+                            newEvent.endDate = date
+                            let eventController = EKEventEditViewController()
+                            eventController.editViewDelegate = self
+                            eventController.eventStore = store
+                            eventController.event = newEvent
+                            
+                            self?.present(eventController, animated: true, completion: nil)
+                            
+                        }
+                    }
+                }
+            }
+            let delete = UIAlertAction(title: "Delete", style: .destructive) { delete in
+                self.removeEvent(indexPath)
+                print("event removed")
+            }
+            
+            alert.addAction(Add)
+            alert.addAction(delete)
+            present(alert, animated: true, completion: nil)
         }
     }
     
-    
+            func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+                controller.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexpath = HostedTV.indexPathForSelectedRow{
